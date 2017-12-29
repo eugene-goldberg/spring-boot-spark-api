@@ -23,13 +23,13 @@ public class SpringBootSparkApiApplication implements CommandLineRunner {
 
 				.appName("SparkWithSpring")
 
-				.master("local")
+				.master("spark://127.0.0.1:7077")
 
 				.getOrCreate();
 
 		System.out.println("Spark Version: " + sparkSession.version());
 
-        Dataset<Row> df = sparkSession.read().json("./people.json");
+        Dataset<Row> df = sparkSession.read().json("/tmp/people.json");
 
         df.show();
 
